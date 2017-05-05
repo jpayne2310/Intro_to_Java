@@ -1,0 +1,47 @@
+package Problem_1;
+import java.util.*;
+public class runLedger {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner keyboard = new Scanner(System.in);
+		Ledger todaySales = new Ledger(10);
+		//double sale = new double[10];
+		String blankLine = " ";
+		char answer = 'y';
+		float d;
+		int x = 0, entries = 0, max = 10;
+		
+		while(answer != 'n' && entries < 10) {
+			System.out.print("Please enter the amount of the sale: ");
+			d = keyboard.nextFloat();
+			todaySales.addSale(d);
+			entries++;
+			System.out.print("would you like to enter another sale? ");
+			answer = keyboard.next().charAt(0);
+		}
+		if(entries == max) {
+			System.out.println("Sorry. maximum number of entries has been reached.");
+		}
+		System.out.println(blankLine);
+		System.out.println("Testing Ledger:");
+		System.out.print("Adding sales ");
+		do
+		{
+			System.out.printf("$%.2f", todaySales.getSale(x));
+			System.out.print(", ");
+			x++;
+		}	while(x < todaySales.getSalesMade()) ;
+		
+		System.out.println(blankLine);
+		System.out.println("The total number of sales are: " + todaySales.getSalesMade());
+		System.out.print("The total amount of sales is $");
+		System.out.printf("%.2f", todaySales.getTotalSales());
+		System.out.println(blankLine);
+		System.out.print("The average amount of sales is $");
+		System.out.println(todaySales.getAverageSales());
+		System.out.println("The number of sales greater than: " + todaySales.getCountAboveTarget(3.5));
+		System.out.println("The number of sales greater than: " + todaySales.getCountAboveTarget(3.0));
+	}
+
+}

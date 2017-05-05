@@ -1,0 +1,10 @@
+package Problem_3;
+
+public class runMovie {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
