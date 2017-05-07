@@ -12,21 +12,28 @@ public class Ledger {
 	//constructors
 	public Ledger() {
 		salesMade = 0;
-		maxSales = 0;
+		sale = new float[20];
 	}
 	
 	public Ledger(int max) {
 		salesMade = 0;
-		maxSales = max;
+		sale = new float[max];
 	}
 	
 	//gets and sets
 	
+	public float getSale(int x) {
+		return sale[x];
+	}
+
+	public void setSale(float[] sale) {
+		this.sale = sale;
+	}
 
 	public int getSalesMade() {
 		return salesMade;
 	}
-	
+
 	public void setSalesMade(int salesMade) {
 		this.salesMade = salesMade;
 	}
@@ -38,17 +45,7 @@ public class Ledger {
 	public void setMaxSales(int maxSales) {
 		this.maxSales = maxSales;
 	}
-
-	public float getSale(int x) {
-		return sale[x];
-	}
-
-	public void setSale(float[] sale) {
-		this.sale = sale;
-	}
-
-
-	
+		
 	//Methods
 	public void addSale(float d) {	
 		sale[salesMade] = d;
@@ -71,13 +68,11 @@ public class Ledger {
 		
 	public int getCountAboveTarget(double target) {	
 		int count = 0;
-		for(int i = 0; i < sale.length; i++) {
+		for(int i = 0; i < salesMade; i++) {
 			if(sale[i] > target) {
 				count++;
 			}
 		}
 		return count;
 	}
-
-
 }

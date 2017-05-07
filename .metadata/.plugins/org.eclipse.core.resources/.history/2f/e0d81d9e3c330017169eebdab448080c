@@ -1,0 +1,70 @@
+package Problem_1;
+import java.util.*;
+public class runLedger {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner keyboard = new Scanner(System.in);
+		
+		String blankLine = " ";	//used for output format
+		char answer = 'y';		//loop condition
+		float d;				//used per instructions
+		double target;			//sales goal
+		int counter = 0;
+		int entries = 0;		//keep track of user input
+		int max = 10;			//maximum entries allowed
+		int incrementer = 1;
+		
+		//set new instance
+		Ledger todaySales = new Ledger();
+		
+		//loop until user ops out or max entries reached
+		while(answer != 'n' && entries < max) {
+			System.out.print("Please enter the amount of the sale: ");
+			d = keyboard.nextFloat();
+			todaySales.addSale(d);
+			entries++;
+			System.out.print("would you like to enter another sale? ");
+			answer = keyboard.next().charAt(0);
+			
+			//ensure comparable letter case
+			if(answer == 'N'){
+				answer = 'n';
+			}
+		}
+		
+		//error message for exceeding max
+		if(entries == max) {
+			System.out.println("Sorry. maximum number of entries has been reached.");
+		}
+		
+		//output results
+		System.out.println(blankLine);
+		System.out.println("Testing Ledger:");
+		System.out.print("Adding sales ");
+		while(counter < todaySales.getSalesMade())
+		{
+			System.out.printf("$%.2f", todaySales.getSale(counter));
+			
+			//no comma for last entry
+			if(incrementer < todaySales.getSalesMade()) {
+				System.out.print(", ");
+				incrementer++;
+			}
+			counter++;
+		}	 
+		
+		System.out.println(blankLine);
+		System.out.println("The total number of sales are: " + todaySales.getSalesMade());
+		System.out.print("The total amount of sales is $");
+		System.out.printf("%.2f", todaySales.getTotalSales());
+		System.out.println(blankLine);
+		System.out.print("The average amount of sales is $");
+		System.out.println(todaySales.getAverageSales());
+		target = 3.5;
+		System.out.println("The number of sales greater than " + target + ": " + todaySales.getCountAboveTarget(target));
+		target = 3.0;
+		System.out.println("The number of sales greater than " + target + ": " + todaySales.getCountAboveTarget(target));
+	}
+
+}
