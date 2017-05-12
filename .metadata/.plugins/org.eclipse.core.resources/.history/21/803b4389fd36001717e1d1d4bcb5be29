@@ -1,0 +1,10 @@
+package Problem_1;
+
+public class run_PayCalculator {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

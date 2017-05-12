@@ -1,0 +1,5 @@
+package Problem_1;
+
+public abstract class PayCalculator {
+
+}
