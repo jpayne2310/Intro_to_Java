@@ -26,7 +26,7 @@ public class Person {
 
     public void writeOutput()
     {
-        System.out.println("Name: " + name);
+        System.out.println("\nName: " + name);
     }
 
     public boolean hasSameName(Person otherPerson)

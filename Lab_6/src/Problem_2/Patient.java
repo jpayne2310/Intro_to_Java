@@ -4,9 +4,9 @@ public class Patient extends Person{
 	String idNumber;
 	
 	//constructor
-	public Patient(String name) {
+	public Patient(String name, String newIdNumber) {
 		super(name);
-		idNumber = "";
+		idNumber = newIdNumber;
 	}
 
 	//accessors and mutatord
@@ -20,6 +20,7 @@ public class Patient extends Person{
 	
 	//methods
 	public void writeOutput() {
+		super.writeOutput();
 		System.out.println("Social Security #: " + idNumber);
 	}
 }

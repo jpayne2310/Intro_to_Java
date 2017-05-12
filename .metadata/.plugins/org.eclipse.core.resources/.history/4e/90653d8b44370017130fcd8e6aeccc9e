@@ -1,0 +1,26 @@
+package Problem_2;
+
+public class Billing {
+	String patientName;
+	String doctorName;
+	double billingAmount;
+	
+	public Billing(String newDoctorName, String newPatientName, double newBillingAmount) {
+		doctorName = newDoctorName;
+		patientName = newPatientName;
+		billingAmount = newBillingAmount;
+	}
+	
+	public void writeOutput(Billing anotherBill) {
+			System.out.println("Doctor: " + doctorName + "\nPatient: " + patientName + 
+					"\nBilling Amount: " + billingAmount + "\n===============================\n");
+		}
+	
+	public Boolean compareRecord(Billing anotherBill) {
+		
+		return (this.patientName.equalsIgnoreCase(anotherBill.patientName) && this.billingAmount == anotherBill.billingAmount);
+	}
+	
+
+
+}

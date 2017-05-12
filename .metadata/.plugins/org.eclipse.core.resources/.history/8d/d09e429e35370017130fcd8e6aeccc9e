@@ -1,0 +1,25 @@
+package Problem_2;
+
+public class BIlling {
+
+		String patientName;
+		String doctorName;
+		double billingAmount;
+		
+		public Billing(String newDoctorName, String newPatientName) {
+			doctorName = newDoctorName;
+			patientName = newPatientName;
+			billingAmount = 0.00;
+		}
+		
+		
+		
+		
+		
+		
+
+	
+	
+
+
+}
