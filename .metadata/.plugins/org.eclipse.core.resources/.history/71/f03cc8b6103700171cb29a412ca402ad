@@ -49,21 +49,12 @@ public class BIlling {
 		System.out.println("Billing Amount: $" + d1.getOfficeVisitFee());
 		System.out.println("===============================================");
 		
-		System.out.println("");
+System.out.println("");
+		
 		System.out.println("Doctor: " + d1.getName());
 		System.out.println("Patient: " + p2.getName());
 		System.out.println("Billing Amount: $" + d1.getOfficeVisitFee());
 		System.out.println("===============================================");
-		
-		System.out.println("");
-		System.out.println("Doctor: " + d2.getName());
-		System.out.println("Patient: " + p1.getName());
-		System.out.println("Billing Amount: $" + d2.getOfficeVisitFee());
-		System.out.println("===============================================");
-		
-		System.out.println("");
-		System.out.println("");
-		//System.out.println("First billing record equal to the second =" + Person.hasSameName("Hobbes"));
 	}
 	
 

@@ -1,0 +1,26 @@
+package Problem_2;
+
+public class BIlling {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println("Two doctors created:");
+		System.out.println("");
+		
+		Doctor d1 = new Doctor("Spock");
+		Doctor d2 = new Doctor("Dolittle");
+		
+		d1.setOfficeVisitFee(200.0);
+		d2.setOfficeVisitFee(175.0);
+		
+		d1.setSpecialty("Pediatrician");
+		d2.setSpecialty("Witch");
+		
+		d1.writeOutput();
+		System.out.println("");
+		System.out.println("");
+		d2.writeOutput();
+	}
+	
+
+}
