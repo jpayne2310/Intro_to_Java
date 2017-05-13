@@ -21,13 +21,13 @@ public class run_clinic {
 		
 		System.out.println("\nThree billing records created:\n");
 		
-		Billing b1 = new Billing(d1.getName(), p1.getName(), d1.getOfficeVisitFee());
+		Billing b1 = new Billing(d1, p1);
 		b1.writeOutput(b1);
 		
-		Billing b2 = new Billing(d1.getName(), p2.getName(), d1.getOfficeVisitFee());
+		Billing b2 = new Billing(d1 p2);
 		b2.writeOutput(b2);
 		
-		Billing b3 = new Billing(d2.getName(), p1.getName(), d2.getOfficeVisitFee());
+		Billing b3 = new Billing(d2, p1);
 		b3.writeOutput(b3);
 		
 		System.out.println("\nFirst billing record equal to the second = " + b1.compareRecord(b2));

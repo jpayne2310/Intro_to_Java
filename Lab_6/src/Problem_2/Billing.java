@@ -18,9 +18,7 @@ public class Billing {
 	
 	public Boolean compareRecord(Billing anotherBill) {
 		//if (hasSameName(anotherBill.doctorName)
-		return (this.patientName.equalsIgnoreCase(anotherBill.patientName) && this.billingAmount == anotherBill.billingAmount);
+		return (this.doctorName.equalsIgnoreCase(anotherBill.doctorName) && this.patientName.equalsIgnoreCase(anotherBill.patientName) && this.billingAmount == anotherBill.billingAmount);
 	}
 	
-
-
 }
