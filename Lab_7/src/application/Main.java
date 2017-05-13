@@ -23,8 +23,9 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			GridPane root = new GridPane();
-			Scene scene = new Scene(root,400,400);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			Scene scene = new Scene(root,500,400);
+			scene.getStylesheets().add(getClass().
+					getResource("application.css").toExternalForm());
 			Label personAge = new Label("What is your age in years?");
 			root.add(personAge, 0,1);
 			TextField ageTextfield = new TextField();
@@ -54,7 +55,10 @@ public class Main extends Application {
 			Label activities = new Label("Activity:");
 			root.add(activities, 0, 5);
 			ChoiceBox active = new ChoiceBox();
-			active.setItems(FXCollections.observableArrayList("Sedentary", "Somewhat active (exercise occasionally)", "Active (exerise 3-4 days per week)", "Highly active (exercise everyday)"));
+			active.setItems(FXCollections.observableArrayList("Sedentary", 
+					"Somewhat active (exercise occasionally)", 
+					"Active (exerise 3-4 days per week)", 
+					"Highly active (exercise everyday)"));
 			active.getSelectionModel().selectFirst();
 			root.add(active, 1, 5);
 			
@@ -70,7 +74,7 @@ public class Main extends Application {
 			    
 			    public void handle(ActionEvent e) {
 			        btn.setTextFill(Color.FIREBRICK);
-			        btn.setText("Sign in button pressed");
+			        btn.setText("Submit button pressed");
 			        int age, height, weight;
 			        String gender = "";
 			        age = Integer.parseInt(ageTextfield.getText());
@@ -113,9 +117,13 @@ public class Main extends Application {
 						bars = (BMG * 1.5)/bar_calories;
 						break;
 					}
-						System.out.println(bars);
-						String output = Double.toString(bars);
-						results.setText(output);
+					
+						String totalBars = Double.toString(bars);
+						results.setText("A " + gender + 
+								" with those measurements should eat\n " + totalBars + 
+								" candy bars per day \nto maintain the same weight.");
+						
+						
 			    }
 			});
 			    

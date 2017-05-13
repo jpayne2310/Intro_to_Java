@@ -24,7 +24,7 @@ public class run_clinic {
 		Billing b1 = new Billing(d1, p1);
 		b1.writeOutput(b1);
 		
-		Billing b2 = new Billing(d1 p2);
+		Billing b2 = new Billing(d1, p2);
 		b2.writeOutput(b2);
 		
 		Billing b3 = new Billing(d2, p1);

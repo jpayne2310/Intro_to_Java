@@ -6,19 +6,19 @@ public class Doctor extends Person{
 	double officeVisitFee;
 	
 	//constructor
-	/*
+	
+	//default
 	public Doctor(String name) {
 		super(name);
 		specialty = "";
 		officeVisitFee = 0.00;	
-	}*/
+	}
 	
 	public Doctor(String name, String newSpecialty, double newOfficeVisitFee) {
 		super(name);
 		specialty = newSpecialty;
 		officeVisitFee = newOfficeVisitFee;	
 	}
-	
 	
 	//accessors and mutators
 	public String getSpecialty() {

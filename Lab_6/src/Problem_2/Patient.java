@@ -4,6 +4,13 @@ public class Patient extends Person{
 	String idNumber;
 	
 	//constructor
+	
+	//default
+	public Patient(String name) {
+		super(name);
+		idNumber = "";	
+	}
+	
 	public Patient(String name, String newIdNumber) {
 		super(name);
 		idNumber = newIdNumber;
