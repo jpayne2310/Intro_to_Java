@@ -1,0 +1,8 @@
+.button {
+    -fx-background-color: red;
+    -fx-text-fill: white;
+}
+.text-field{
+    -fx-max-width: 80;
+
+}

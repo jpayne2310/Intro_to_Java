@@ -1,0 +1,14 @@
+
+.cell {
+    /* 1 pixel border around the left and bottom of each cell: */
+    -fx-background-color: cell-border-color, cell-color ;
+    -fx-background-insets: 0, 0 0 1 1 ;
+}
+.button {
+    -fx-background-color: red;
+    -fx-text-fill: white;
+}
+.text-field{
+    -fx-max-width: 80;
+
+}
