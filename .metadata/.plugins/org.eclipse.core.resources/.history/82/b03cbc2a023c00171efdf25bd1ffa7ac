@@ -1,0 +1,13 @@
+.root {
+    -fx-padding: 20 ;
+}
+.scene2 {
+    -fx-padding: 20 ;
+}
+.button {
+    -fx-background-color: red;
+    -fx-text-fill: white;
+}
+.text-field{
+    -fx-max-width: 80;
+}
