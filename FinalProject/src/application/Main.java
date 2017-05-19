@@ -26,10 +26,10 @@ public class Main extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
-		
+
 		Button button2 = new Button("Go to scene 1");
 		button2.setOnAction(e -> primaryStage.setScene(scene1));
-		
+
 		try {
 			primaryStage.setTitle("Morgage Calculator");
 			GridPane grid = new GridPane();
@@ -38,15 +38,14 @@ public class Main extends Application {
 			// set grid format
 			grid.setVgap(25);
 			grid.setHgap(10);
-			
+
 			GridPane grid2 = new GridPane();
-			scene2 = new Scene(grid2, 290, 500, Color.web("#e2e2e2"));
+			scene2 = new Scene(grid2, 340, 500, Color.web("#e2e2e2"));
 			scene2.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			// set grid format
 			grid2.setVgap(10);
 			grid2.setHgap(40);
-			
-			grid2.getChildren().add(button2);
+			//grid2.setGridLinesVisible(true);
 			
 
 			// declared textfields for scene 1
@@ -58,18 +57,33 @@ public class Main extends Application {
 			TextField PMI = new TextField();
 			TextField homeIns = new TextField();
 			TextField monthlyHOA = new TextField();
-			
+
 			// declare labels for scene 2
 			Label payWithPMI = new Label("Payment with PMI");
 			Label ansPayWithPMI = new Label("$1,693.54");
 			Label payAfterMonths = new Label("After 26 months");
 			Label ansPayAfterMonths = new Label("$1,589.37");
-			
-			
-			
-			
-			Label loan_payoff_date = new Label("Loan pay-off date");
-			Label ansLoan_payoff_date = new Label("");
+			Label PMI26Payment = new Label("26 PMI Payments");
+			Label ansPMI26Payment = new Label("104.17");
+			Label totalPMI = new Label("Total PMI");
+			Label ansTotalPMI = new Label("$2,708.33");
+			Label loanPayoffDate = new Label("Loan pay-off date");
+			Label ansLoanPayoffDate = new Label("Apr, 2047");
+			Label totalIntPaid = new Label("Total Interest Paid");
+			Label ansTotalIntPaid = new Label("$176,965.43");
+			Label monthlyTaxPaid = new Label("Monthly Tax Paid");
+			Label ansMonthlyTaxPaid = new Label("$312.50");
+			Label totalTaxPaid = new Label("Total Tax Paid");
+			Label ansTotalTaxPaid = new Label("$112,500.00");
+			Label monthlyHomeIns = new Label("Monthly Home Insurance");
+			Label ansMonthlyHomeIns = new Label("$83.33");
+			Label totalHomeIns = new Label("Total Home Insurance");
+			Label ansTotalHomeIns = new Label("$30,000.00");
+			Label annualPaymentAmount = new Label("Annual Payment Amount");
+			Label ansAnnualPaymentAmount = new Label("$19,072.46");
+			Label totalOfPayments = new Label("Total of 360 Payments");
+			Label ansTotalOfPayments = new Label("$574,882.10");
+
 			// declared controls
 			Button btnCalculate = new Button("Calculate");
 
@@ -99,13 +113,39 @@ public class Main extends Application {
 			grid.add(monthlyHOA, 1, 8);
 			grid.add(new Text("$"), 2, 8);
 			grid.add(btnCalculate, 1, 9);
-			
-			//grid2 layout
+
+			// grid2 layout
 			grid2.add(ansPayWithPMI, 0, 1);
-			grid2.add(ansPayAfterMonths, 1, 1);
 			grid2.add(payWithPMI, 0, 2);
+			grid2.add(ansPayAfterMonths, 1, 1);
 			grid2.add(payAfterMonths, 1, 2);
-			
+
+			grid2.add(ansPMI26Payment, 0, 3);
+			grid2.add(PMI26Payment, 0, 4);
+			grid2.add(ansTotalPMI, 1, 3);
+			grid2.add(totalPMI, 1, 4);
+
+			grid2.add(ansLoanPayoffDate, 0, 5);
+			grid2.add(loanPayoffDate, 0, 6);
+			grid2.add(ansTotalIntPaid, 1, 5);
+			grid2.add(totalIntPaid, 1, 6);
+
+			grid2.add(ansMonthlyTaxPaid, 0, 7);
+			grid2.add(monthlyTaxPaid, 0, 8);
+			grid2.add(ansTotalTaxPaid, 1, 7);
+			grid2.add(totalTaxPaid, 1, 8);
+
+			grid2.add(ansMonthlyHomeIns, 0, 9);
+			grid2.add(monthlyHomeIns, 0, 10);
+			grid2.add(ansTotalHomeIns, 1, 9);
+			grid2.add(totalHomeIns, 1, 10);
+
+			grid2.add(ansAnnualPaymentAmount, 0, 11);
+			grid2.add(annualPaymentAmount, 0, 12);
+			grid2.add(ansTotalOfPayments, 1, 11);
+			grid2.add(totalOfPayments, 1, 12);
+			grid2.add(button2, 1, 13);
+
 			btnCalculate.setOnAction(new EventHandler<ActionEvent>() {
 
 				public void handle(ActionEvent e) {
