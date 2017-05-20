@@ -21,10 +21,7 @@ public class Main extends Application {
 	Scene scene1, scene2;
 	ClientInfo client1 = new ClientInfo();
 	
-	public static void main(String[] args) {
-		launch(args);
-	}
-
+	
 	@Override
 	public void start(Stage primaryStage) {
 
@@ -59,7 +56,64 @@ public class Main extends Application {
 			TextField homeIns = new TextField();
 			TextField monthlyHOA = new TextField();
 
+			// declare labels for scene 2
+			Label payWithPMI = new Label("Payment with PMI");
+			Label ansPayWithPMI = new Label("$1,693.54");
 			
+			Label payAfterMonths = new Label("After 26 months");
+			Label ansPayAfterMonths = new Label("$1,589.37");
+			Label PMI26Payment = new Label("26 PMI Payments");
+			Label ansPMI26Payment = new Label("104.17");
+			Label totalPMI = new Label("Total PMI");
+			Label ansTotalPMI = new Label("$2,708.33");
+			Label loanPayoffDate = new Label("Loan pay-off date");
+			Label ansLoanPayoffDate = new Label("Apr, 2047");
+			Label totalIntPaid = new Label("Total Interest Paid");
+			Label ansTotalIntPaid = new Label("$176,965.43");
+			Label monthlyTaxPaid = new Label("Monthly Tax Paid");
+			Label ansMonthlyTaxPaid = new Label();
+			Label totalTaxPaid = new Label("Total Tax Paid");
+			Label ansTotalTaxPaid = new Label();
+			Label monthlyHomeIns = new Label("Monthly Home Insurance");
+			Label ansMonthlyHomeIns = new Label();
+			Label totalHomeIns = new Label("Total Home Insurance");
+			Label ansTotalHomeIns = new Label();
+			Label annualPaymentAmount = new Label("Annual Payment Amount");
+			Label ansAnnualPaymentAmount = new Label("$19,072.46");
+			Label totalOfPayments = new Label("Total of 360 Payments");
+			Label ansTotalOfPayments = new Label("$574,882.10");
+
+// grid2 layout
+			grid2.add(ansPayWithPMI, 0, 1);
+			grid2.add(payWithPMI, 0, 2);
+			grid2.add(ansPayAfterMonths, 1, 1);
+			grid2.add(payAfterMonths, 1, 2);
+
+			grid2.add(ansPMI26Payment, 0, 3);
+			grid2.add(PMI26Payment, 0, 4);
+			grid2.add(ansTotalPMI, 1, 3);
+			grid2.add(totalPMI, 1, 4);
+
+			grid2.add(ansLoanPayoffDate, 0, 5);
+			grid2.add(loanPayoffDate, 0, 6);
+			grid2.add(ansTotalIntPaid, 1, 5);
+			grid2.add(totalIntPaid, 1, 6);
+
+			grid2.add(ansMonthlyTaxPaid, 0, 7);
+			grid2.add(monthlyTaxPaid, 0, 8);
+			grid2.add(ansTotalTaxPaid, 1, 7);
+			grid2.add(totalTaxPaid, 1, 8);
+
+			grid2.add(ansMonthlyHomeIns, 0, 9);
+			grid2.add(monthlyHomeIns, 0, 10);
+			grid2.add(ansTotalHomeIns, 1, 9);
+			grid2.add(totalHomeIns, 1, 10);
+
+			grid2.add(ansAnnualPaymentAmount, 0, 11);
+			grid2.add(annualPaymentAmount, 0, 12);
+			grid2.add(ansTotalOfPayments, 1, 11);
+			grid2.add(totalOfPayments, 1, 12);
+			grid2.add(button2, 1, 13);
 
 			// declared controls
 			Button btnCalculate = new Button("Calculate");
@@ -101,90 +155,39 @@ public class Main extends Application {
 					
 					
 					client1.setHomeValue(Double.parseDouble(homeValue.getText()));
-					System.out.println(client1.getHomeValue());
 					client1.setLoanAmount(Double.parseDouble(loanAmount.getText()));
-					System.out.println(client1.getLoanAmount());
 					client1.setIntRate(Double.parseDouble(intRate.getText()));
-					System.out.println(client1.getIntRate());
-					client1.setLoanTerm(Integer.parseInt(loanTerm.getText()));					
-					System.out.println(client1.getLoanTerm());				
-					client1.setPropertyTax(Double.parseDouble(propertyTax.getText()));
-					System.out.println(client1.getPropertyTax());				
+					client1.setLoanTerm(Integer.parseInt(loanTerm.getText()));								
+					client1.setPropertyTax(Double.parseDouble(propertyTax.getText()));				
 					client1.setPMI(Double.parseDouble(PMI.getText()));
-					System.out.println(client1.getPMI());
 					client1.setHomeIns(Double.parseDouble(homeIns.getText()));
-					System.out.println(client1.getHomeIns());
 					client1.setMonthlyHOA(Double.parseDouble(monthlyHOA.getText()));
-					System.out.println(client1.getMonthlyHOA());
 					
 					primaryStage.setScene(scene2);
+					
+					ansMonthlyHomeIns.setText(Double.toString(client1.CalMonthlyHomeIns()));
+					ansTotalHomeIns.setText(Double.toString(client1.CalTotalHomeIns()));
+					ansMonthlyTaxPaid.setText(Double.toString(client1.CalMonthlyTaxPaid()));
+					ansTotalTaxPaid.setText(Double.toString(client1.CalTotalTaxPaid()));
 				}
 
 			});
 			
-			// declare labels for scene 2
-						Label payWithPMI = new Label("Payment with PMI");
-						Label ansPayWithPMI = new Label();
-						Label payAfterMonths = new Label("After 26 months");
-						Label ansPayAfterMonths = new Label("$1,589.37");
-						Label PMI26Payment = new Label("26 PMI Payments");
-						Label ansPMI26Payment = new Label("104.17");
-						Label totalPMI = new Label("Total PMI");
-						Label ansTotalPMI = new Label("$2,708.33");
-						Label loanPayoffDate = new Label("Loan pay-off date");
-						Label ansLoanPayoffDate = new Label("Apr, 2047");
-						Label totalIntPaid = new Label("Total Interest Paid");
-						Label ansTotalIntPaid = new Label("$176,965.43");
-						Label monthlyTaxPaid = new Label("Monthly Tax Paid");
-						Label ansMonthlyTaxPaid = new Label("$312.50");
-						Label totalTaxPaid = new Label("Total Tax Paid");
-						Label ansTotalTaxPaid = new Label("$112,500.00");
-						Label monthlyHomeIns = new Label("Monthly Home Insurance");
-						Label ansMonthlyHomeIns = new Label("$83.33");
-						Label totalHomeIns = new Label("Total Home Insurance");
-						Label ansTotalHomeIns = new Label("$30,000.00");
-						Label annualPaymentAmount = new Label("Annual Payment Amount");
-						Label ansAnnualPaymentAmount = new Label("$19,072.46");
-						Label totalOfPayments = new Label("Total of 360 Payments");
-						Label ansTotalOfPayments = new Label("$574,882.10");
 			
-			// grid2 layout
-						grid2.add(ansPayWithPMI, 0, 1);
-						grid2.add(payWithPMI, 0, 2);
-						grid2.add(ansPayAfterMonths, 1, 1);
-						grid2.add(payAfterMonths, 1, 2);
-
-						grid2.add(ansPMI26Payment, 0, 3);
-						grid2.add(PMI26Payment, 0, 4);
-						grid2.add(ansTotalPMI, 1, 3);
-						grid2.add(totalPMI, 1, 4);
-
-						grid2.add(ansLoanPayoffDate, 0, 5);
-						grid2.add(loanPayoffDate, 0, 6);
-						grid2.add(ansTotalIntPaid, 1, 5);
-						grid2.add(totalIntPaid, 1, 6);
-
-						grid2.add(ansMonthlyTaxPaid, 0, 7);
-						grid2.add(monthlyTaxPaid, 0, 8);
-						grid2.add(ansTotalTaxPaid, 1, 7);
-						grid2.add(totalTaxPaid, 1, 8);
-
-						grid2.add(ansMonthlyHomeIns, 0, 9);
-						grid2.add(monthlyHomeIns, 0, 10);
-						grid2.add(ansTotalHomeIns, 1, 9);
-						grid2.add(totalHomeIns, 1, 10);
-
-						grid2.add(ansAnnualPaymentAmount, 0, 11);
-						grid2.add(annualPaymentAmount, 0, 12);
-						grid2.add(ansTotalOfPayments, 1, 11);
-						grid2.add(totalOfPayments, 1, 12);
-						grid2.add(button2, 1, 13);
 
 			primaryStage.setScene(scene1);
 			primaryStage.show();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		
+	}
+	public static void main(String[] args) {
+		launch(args);
 	}
 
+
 }
+
+

@@ -1,8 +1,0 @@
-package Problem_1;
-
-public class RegularPay {
-	public RegularPay(double payRate) {
-		super(payRate);
-	}
-
-}

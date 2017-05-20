@@ -5,6 +5,8 @@ public class ClientInfo {
 
 	}
 
+	private static double MonthlyTaxPaid = 0;
+
 	double homeValue;
 	double loanAmount;
 	double intRate;
@@ -62,7 +64,7 @@ public class ClientInfo {
 	}
 
 	public void setPropertyTax(double propertyTax) {
-		this.propertyTax = propertyTax;
+		this.propertyTax = propertyTax/100;
 	}
 
 	public double getPMI() {
@@ -87,6 +89,24 @@ public class ClientInfo {
 
 	public void setMonthlyHOA(double monthlyHOA) {
 		this.monthlyHOA = monthlyHOA;
+	}
+	
+	//methods
+	public double CalMonthlyHomeIns() {
+		double MonthlyHomeIns = homeIns/12;
+		return MonthlyHomeIns;
+	}
+	public double CalTotalHomeIns() {
+		double totalHomeIns = homeIns * loanTerm;
+		return totalHomeIns;
+	}
+	public double CalMonthlyTaxPaid() {
+		MonthlyTaxPaid = (homeValue * propertyTax)/12;
+		return MonthlyTaxPaid;
+	}
+	public double CalTotalTaxPaid() {
+		double totalTaxPaid = MonthlyTaxPaid * 12 * 30;
+		return totalTaxPaid;
 	}
 
 }
