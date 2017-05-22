@@ -1,13 +1,18 @@
 package application;
 
+import java.sql.Date;
+import java.time.LocalDate;
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
@@ -24,21 +29,21 @@ public class Main extends Application {
 	
 	@Override
 	public void start(Stage primaryStage) {
-
+		final DatePicker datePicker = new DatePicker();
 		Button button2 = new Button("Go to scene 1");
 		button2.setOnAction(e -> primaryStage.setScene(scene1));
 
 		try {
 			primaryStage.setTitle("Morgage Calculator");
 			GridPane grid = new GridPane();
-			scene1 = new Scene(grid, 290, 500, Color.BLACK);
+			scene1 = new Scene(grid, 290, 530);
 			scene1.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			// set grid format
 			grid.setVgap(25);
 			grid.setHgap(10);
 
 			GridPane grid2 = new GridPane();
-			scene2 = new Scene(grid2, 340, 500, Color.BLACK);
+			scene2 = new Scene(grid2, 340, 500);
 			scene2.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			// set grid format
 			grid2.setVgap(10);
@@ -58,16 +63,16 @@ public class Main extends Application {
 
 			// declare labels for scene 2
 			Label payWithPMI = new Label("Payment with PMI");
-			Label ansPayWithPMI = new Label("$1,693.54");
+			Label ansPayWithPMI = new Label();
 			
 			Label payAfterMonths = new Label("After 26 months");
-			Label ansPayAfterMonths = new Label("$1,589.37");
+			Label ansPayAfterMonths = new Label("");
 			Label PMI26Payment = new Label("26 PMI Payments");
-			Label ansPMI26Payment = new Label("104.17");
+			Label ansPMI26Payment = new Label("");
 			Label totalPMI = new Label("Total PMI");
-			Label ansTotalPMI = new Label("$2,708.33");
+			Label ansTotalPMI = new Label("");
 			Label loanPayoffDate = new Label("Loan pay-off date");
-			Label ansLoanPayoffDate = new Label("Apr, 2047");
+			Label ansLoanPayoffDate = new Label();
 			Label totalIntPaid = new Label("Total Interest Paid");
 			Label ansTotalIntPaid = new Label("$176,965.43");
 			Label monthlyTaxPaid = new Label("Monthly Tax Paid");
@@ -79,9 +84,9 @@ public class Main extends Application {
 			Label totalHomeIns = new Label("Total Home Insurance");
 			Label ansTotalHomeIns = new Label();
 			Label annualPaymentAmount = new Label("Annual Payment Amount");
-			Label ansAnnualPaymentAmount = new Label("$19,072.46");
+			Label ansAnnualPaymentAmount = new Label();
 			Label totalOfPayments = new Label("Total of 360 Payments");
-			Label ansTotalOfPayments = new Label("$574,882.10");
+			Label ansTotalOfPayments = new Label();
 
 // grid2 layout
 			grid2.add(ansPayWithPMI, 0, 1);
@@ -128,23 +133,32 @@ public class Main extends Application {
 			grid.add(new Text("Interest Rate:"), 0, 3);
 			grid.add(intRate, 1, 3);
 			grid.add(new Text("%"), 2, 3);
-			grid.add(new Text("Loan Term:"), 0, 4);
-			grid.add(loanTerm, 1, 4);
-			grid.add(new Text("years"), 2, 4);
-			grid.add(new Text("Property Tax:"), 0, 5);
-			grid.add(propertyTax, 1, 5);
-			grid.add(new Text("%"), 2, 5);
-			grid.add(new Text("PMI:"), 0, 6);
-			grid.add(PMI, 1, 6);
+			
+			grid.add(new Text("Start Date:"), 0, 4);
+			grid.add(datePicker, 1, 4);
+			
+			grid.add(new Text("Loan Term:"), 0, 5);
+			grid.add(loanTerm, 1, 5);
+			grid.add(new Text("years"), 2, 5);
+			
+			grid.add(new Text("Property Tax:"), 0, 6);
+			grid.add(propertyTax, 1, 6);
 			grid.add(new Text("%"), 2, 6);
-			grid.add(new Text("Home Ins:"), 0, 7);
-			grid.add(homeIns, 1, 7);
-			grid.add(new Text("$/yr"), 2, 7);
-			grid.add(new Text("Monthly HOA"), 0, 8);
-			grid.add(monthlyHOA, 1, 8);
-			grid.add(new Text("$"), 2, 8);
-			grid.add(btnCalculate, 1, 9);
-
+			
+			grid.add(new Text("PMI:"), 0, 7);
+			grid.add(PMI, 1, 7);
+			grid.add(new Text("%"), 2, 7);
+			
+			grid.add(new Text("Home Ins:"), 0, 8);
+			grid.add(homeIns, 1, 8);
+			grid.add(new Text("$/yr"), 2, 8);
+			
+			grid.add(new Text("Monthly HOA"), 0, 9);
+			grid.add(monthlyHOA, 1, 9);
+			grid.add(new Text("$"), 2, 9);
+			
+			grid.add(btnCalculate, 1, 10);
+			
 			
 
 			btnCalculate.setOnAction(new EventHandler<ActionEvent>() {
@@ -159,7 +173,7 @@ public class Main extends Application {
 					client1.setIntRate(Double.parseDouble(intRate.getText()));
 					client1.setLoanTerm(Integer.parseInt(loanTerm.getText()));								
 					client1.setPropertyTax(Double.parseDouble(propertyTax.getText()));				
-					client1.setPMI(Double.parseDouble(PMI.getText()));
+					//client1.setPMI(Double.parseDouble(PMI.getText()));
 					client1.setHomeIns(Double.parseDouble(homeIns.getText()));
 					client1.setMonthlyHOA(Double.parseDouble(monthlyHOA.getText()));
 					
@@ -169,11 +183,28 @@ public class Main extends Application {
 					ansTotalHomeIns.setText(Double.toString(client1.CalTotalHomeIns()));
 					ansMonthlyTaxPaid.setText(Double.toString(client1.CalMonthlyTaxPaid()));
 					ansTotalTaxPaid.setText(Double.toString(client1.CalTotalTaxPaid()));
+					ansPayWithPMI.setText(Double.toString(client1.CalMonthlyPayment()));
+					ansTotalPMI.setText(Double.toString(client1.CalTotalPMI()));
+					ansPMI26Payment.setText(Double.toString(client1.CalMonthlyPMI()));
+					ansPayAfterMonths.setText(Double.toString(client1.CalAfterMonthsPMI()));
+					ansAnnualPaymentAmount.setText(Double.toString(client1.CalAnnualPaymentAmount()));
+					ansTotalOfPayments.setText(Double.toString(client1.CalTotalPaymentAmount()));
+					//ansLoanPayoffDate.setText(datePicker.getValue());
 				}
 
 			});
 			
-			
+			datePicker.setOnAction(new EventHandler() {
+				 
+	            @Override
+	            public void handle(Event event) {
+	                LocalDate date = datePicker.getValue();
+	                System.err.println("Selected date: " + date);
+	            }
+
+	        });
+			datePicker.setValue(LocalDate.now());
+	        datePicker.setShowWeekNumbers(true);
 
 			primaryStage.setScene(scene1);
 			primaryStage.show();
