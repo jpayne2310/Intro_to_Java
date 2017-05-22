@@ -8,7 +8,7 @@ public class ClientInfo {
 	double totalPMI = 0;
 
 	double homeValue;
-	private double loanAmount;
+	double loanAmount;
 	double intRate;
 	int loanTerm;
 	String date;

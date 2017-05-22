@@ -1,0 +1,9 @@
+package application;
+
+public class CompareOptions extends ClientInfo {
+	
+	double biWeeklyPayment;
+	String biWeeklyDate;
+	double biWeeklyPaid;
+
+}

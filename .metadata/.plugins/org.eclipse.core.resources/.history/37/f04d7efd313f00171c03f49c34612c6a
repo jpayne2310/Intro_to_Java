@@ -2,13 +2,15 @@ package application;
 import java.time.LocalDate;
 import java.util.*;
 public class ClientInfo {
-	
+	public class java {
+
+	}
 
 	private static double MonthlyTaxPaid = 0;
 	double totalPMI = 0;
 
 	double homeValue;
-	private double loanAmount;
+	double loanAmount;
 	double intRate;
 	int loanTerm;
 	String date;
