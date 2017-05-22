@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.Labeled;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -23,9 +24,8 @@ import javafx.scene.text.Text;
 
 public class Main extends Application {
 
-	Scene scene1, scene2;
+	Scene scene1, scene2, scene3;
 	ClientInfo client1 = new ClientInfo();
-	
 	
 	@Override
 	public void start(Stage primaryStage) {
@@ -41,14 +41,13 @@ public class Main extends Application {
 			// set grid format
 			grid.setVgap(25);
 			grid.setHgap(10);
-
+			
 			GridPane grid2 = new GridPane();
 			scene2 = new Scene(grid2, 340, 500);
 			scene2.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			// set grid format
 			grid2.setVgap(10);
 			grid2.setHgap(40);
-			//grid2.setGridLinesVisible(true);
 			
 
 			// declared textfields for scene 1
@@ -63,18 +62,18 @@ public class Main extends Application {
 
 			// declare labels for scene 2
 			Label payWithPMI = new Label("Payment with PMI");
-			Label ansPayWithPMI = new Label();
+			Label ansPayWithPMI = new Label("$");
 			
 			Label payAfterMonths = new Label("After 26 months");
-			Label ansPayAfterMonths = new Label("");
+			Label ansPayAfterMonths = new Label();
 			Label PMI26Payment = new Label("26 PMI Payments");
-			Label ansPMI26Payment = new Label("");
+			Label ansPMI26Payment = new Label();
 			Label totalPMI = new Label("Total PMI");
-			Label ansTotalPMI = new Label("");
+			Label ansTotalPMI = new Label();
 			Label loanPayoffDate = new Label("Loan pay-off date");
 			Label ansLoanPayoffDate = new Label();
 			Label totalIntPaid = new Label("Total Interest Paid");
-			Label ansTotalIntPaid = new Label("$176,965.43");
+			Label ansTotalIntPaid = new Label();
 			Label monthlyTaxPaid = new Label("Monthly Tax Paid");
 			Label ansMonthlyTaxPaid = new Label();
 			Label totalTaxPaid = new Label("Total Tax Paid");
@@ -88,37 +87,62 @@ public class Main extends Application {
 			Label totalOfPayments = new Label("Total of 360 Payments");
 			Label ansTotalOfPayments = new Label();
 
-// grid2 layout
+			// grid2 layout
 			grid2.add(ansPayWithPMI, 0, 1);
 			grid2.add(payWithPMI, 0, 2);
 			grid2.add(ansPayAfterMonths, 1, 1);
 			grid2.add(payAfterMonths, 1, 2);
+			
+			Line line1 = new Line(0, 100, 135, 100);
+			grid2.add(line1, 0, 3);
+			Line line2 = new Line(0, 100, 115, 100);
+			grid2.add(line2, 1, 3);
 
-			grid2.add(ansPMI26Payment, 0, 3);
-			grid2.add(PMI26Payment, 0, 4);
-			grid2.add(ansTotalPMI, 1, 3);
-			grid2.add(totalPMI, 1, 4);
+			grid2.add(ansPMI26Payment, 0, 4);
+			grid2.add(PMI26Payment, 0, 5);
+			grid2.add(ansTotalPMI, 1, 4);
+			grid2.add(totalPMI, 1, 5);
+			
+			Line line3 = new Line(0, 100, 135, 100);
+			grid2.add(line3, 0, 6);
+			Line line4 = new Line(0, 100, 115, 100);
+			grid2.add(line4, 1, 6);
 
-			grid2.add(ansLoanPayoffDate, 0, 5);
-			grid2.add(loanPayoffDate, 0, 6);
-			grid2.add(ansTotalIntPaid, 1, 5);
-			grid2.add(totalIntPaid, 1, 6);
+			grid2.add(ansLoanPayoffDate, 0, 7);
+			grid2.add(loanPayoffDate, 0, 8);
+			grid2.add(ansTotalIntPaid, 1, 7);
+			grid2.add(totalIntPaid, 1, 8);
+			
+			Line line5 = new Line(0, 100, 135, 100);
+			grid2.add(line5, 0, 9);
+			Line line6 = new Line(0, 100, 115, 100);
+			grid2.add(line6, 1, 9);
 
-			grid2.add(ansMonthlyTaxPaid, 0, 7);
-			grid2.add(monthlyTaxPaid, 0, 8);
-			grid2.add(ansTotalTaxPaid, 1, 7);
-			grid2.add(totalTaxPaid, 1, 8);
+			grid2.add(ansMonthlyTaxPaid, 0, 10);
+			grid2.add(monthlyTaxPaid, 0, 11);
+			grid2.add(ansTotalTaxPaid, 1, 10);
+			grid2.add(totalTaxPaid, 1, 11);
+			
+			Line line7 = new Line(0, 100, 135, 100);
+			grid2.add(line7, 0, 12);
+			Line line8 = new Line(0, 100, 115, 100);
+			grid2.add(line8, 1, 12);
 
-			grid2.add(ansMonthlyHomeIns, 0, 9);
-			grid2.add(monthlyHomeIns, 0, 10);
-			grid2.add(ansTotalHomeIns, 1, 9);
-			grid2.add(totalHomeIns, 1, 10);
+			grid2.add(ansMonthlyHomeIns, 0, 13);
+			grid2.add(monthlyHomeIns, 0, 14);
+			grid2.add(ansTotalHomeIns, 1, 13);
+			grid2.add(totalHomeIns, 1, 14);
+			
+			Line line9 = new Line(0, 100, 135, 100);
+			grid2.add(line9, 0, 15);
+			Line line10 = new Line(0, 100, 115, 100);
+			grid2.add(line10, 1, 15);
 
-			grid2.add(ansAnnualPaymentAmount, 0, 11);
-			grid2.add(annualPaymentAmount, 0, 12);
-			grid2.add(ansTotalOfPayments, 1, 11);
-			grid2.add(totalOfPayments, 1, 12);
-			grid2.add(button2, 1, 13);
+			grid2.add(ansAnnualPaymentAmount, 0, 16);
+			grid2.add(annualPaymentAmount, 0, 17);
+			grid2.add(ansTotalOfPayments, 1, 16);
+			grid2.add(totalOfPayments, 1, 17);
+			grid2.add(button2, 1, 20);
 
 			// declared controls
 			Button btnCalculate = new Button("Calculate");
@@ -134,8 +158,9 @@ public class Main extends Application {
 			grid.add(intRate, 1, 3);
 			grid.add(new Text("%"), 2, 3);
 			
-			grid.add(new Text("Start Date:"), 0, 4);
+			grid.add(new Text("Start Date:"), 0, 4); 
 			grid.add(datePicker, 1, 4);
+			datePicker.setValue(LocalDate.now());
 			
 			grid.add(new Text("Loan Term:"), 0, 5);
 			grid.add(loanTerm, 1, 5);
@@ -164,47 +189,37 @@ public class Main extends Application {
 			btnCalculate.setOnAction(new EventHandler<ActionEvent>() {
 
 				public void handle(ActionEvent e) {
-					//double hValue = 0, lAmount = 0, iRate = 0, pTax = 0, pmi = 0, hIns = 0, mHOA = 0;
-					//int lTerm = 0;
-					
-					
+					LocalDate date = datePicker.getValue();
 					client1.setHomeValue(Double.parseDouble(homeValue.getText()));
 					client1.setLoanAmount(Double.parseDouble(loanAmount.getText()));
 					client1.setIntRate(Double.parseDouble(intRate.getText()));
 					client1.setLoanTerm(Integer.parseInt(loanTerm.getText()));								
 					client1.setPropertyTax(Double.parseDouble(propertyTax.getText()));				
-					//client1.setPMI(Double.parseDouble(PMI.getText()));
+					client1.setDate(date.toString());
 					client1.setHomeIns(Double.parseDouble(homeIns.getText()));
 					client1.setMonthlyHOA(Double.parseDouble(monthlyHOA.getText()));
 					
 					primaryStage.setScene(scene2);
 					
-					ansMonthlyHomeIns.setText(Double.toString(client1.CalMonthlyHomeIns()));
-					ansTotalHomeIns.setText(Double.toString(client1.CalTotalHomeIns()));
-					ansMonthlyTaxPaid.setText(Double.toString(client1.CalMonthlyTaxPaid()));
-					ansTotalTaxPaid.setText(Double.toString(client1.CalTotalTaxPaid()));
-					ansPayWithPMI.setText(Double.toString(client1.CalMonthlyPayment()));
-					ansTotalPMI.setText(Double.toString(client1.CalTotalPMI()));
-					ansPMI26Payment.setText(Double.toString(client1.CalMonthlyPMI()));
-					ansPayAfterMonths.setText(Double.toString(client1.CalAfterMonthsPMI()));
-					ansAnnualPaymentAmount.setText(Double.toString(client1.CalAnnualPaymentAmount()));
-					ansTotalOfPayments.setText(Double.toString(client1.CalTotalPaymentAmount()));
-					//ansLoanPayoffDate.setText(datePicker.getValue());
+					ansPayWithPMI.setText(String.format("$%,6.2f",client1.CalMonthlyPayment()));
+					ansPayAfterMonths.setText(String.format("$%6.2f",client1.CalAfterMonthsPMI()));
+					ansPMI26Payment.setText(String.format("$%,6.2f",client1.CalMonthlyPMI()));
+					ansTotalPMI.setText(String.format("$%,6.2f",client1.CalTotalPMI()));
+					ansLoanPayoffDate.setText(String.format(client1.CalDate()));
+					ansTotalIntPaid.setText(String.format("$%,6.2f",client1.CalTotalInterest()));
+					ansMonthlyTaxPaid.setText(String.format("$%6.2f",client1.CalMonthlyTaxPaid()));
+					ansTotalTaxPaid.setText(String.format("$%,6.2f",client1.CalTotalTaxPaid()));
+					ansMonthlyHomeIns.setText(String.format("$%6.2f",client1.CalMonthlyHomeIns()));
+					ansTotalHomeIns.setText(String.format("$%,6.2f",client1.CalTotalHomeIns()));
+					ansAnnualPaymentAmount.setText(String.format("$%,6.2f",client1.CalAnnualPaymentAmount()));
+					ansTotalOfPayments.setText(String.format("$%,6.2f",client1.CalTotalPaymentAmount()));				
 				}
 
 			});
 			
-			datePicker.setOnAction(new EventHandler() {
-				 
-	            @Override
-	            public void handle(Event event) {
-	                LocalDate date = datePicker.getValue();
-	                System.err.println("Selected date: " + date);
-	            }
+			
+			
 
-	        });
-			datePicker.setValue(LocalDate.now());
-	        datePicker.setShowWeekNumbers(true);
 
 			primaryStage.setScene(scene1);
 			primaryStage.show();

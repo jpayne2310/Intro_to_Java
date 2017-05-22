@@ -1,4 +1,5 @@
 package application;
+import java.time.LocalDate;
 import java.util.*;
 public class ClientInfo {
 	public class java {
@@ -12,6 +13,7 @@ public class ClientInfo {
 	double loanAmount;
 	double intRate;
 	int loanTerm;
+	String date;
 	double propertyTax;
 	double PMI;
 	double homeIns;
@@ -22,10 +24,19 @@ public class ClientInfo {
 		loanAmount = 0;
 		intRate = 0;
 		loanTerm = 0;
+		date = "";
 		propertyTax = 0;
 		PMI = .010832;
 		homeIns = 0;
 		monthlyHOA = 0;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
 	}
 
 	public double getHomeValue() {
@@ -127,6 +138,17 @@ public class ClientInfo {
 		double totalPaymentAmount = (CalMonthlyPayment() * 26) + (CalAfterMonthsPMI() * 334);
 		return totalPaymentAmount;
 	}
-	
+	public double CalTotalInterest() {
+		double totalInterest = loanAmount*.70786;
+		return totalInterest;
+	}
+	public String CalDate() {
+		String startDate = getDate();
+		String yearGrab = startDate.substring(0,4);
+		int newYear = Integer.parseInt(yearGrab) + getLoanTerm();
+		String yearBackToString = Integer.toString(newYear);
+		String closingDate = yearBackToString + startDate.substring(4, 10);
+		return  closingDate;
+	}
 
 }
