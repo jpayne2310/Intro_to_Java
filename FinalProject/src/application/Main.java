@@ -28,14 +28,11 @@ public class Main extends Application {
 
 	Scene scene1, scene2, scene3;
 	ClientInfo client1 = new ClientInfo();
+	CompareOptions client2 = new CompareOptions(0, 0, 0, 0, null, 0, 0, 0, 0);
 	
 	@Override
 	public void start(Stage primaryStage) {
-		final DatePicker datePicker = new DatePicker();
-		Button button2 = new Button("Go to scene 1");
-		button2.setOnAction(e -> primaryStage.setScene(scene1));
-		Button button3 = new Button("Go to scene 3");
-		button3.setOnAction(e -> primaryStage.setScene(scene3));
+		
 
 		try {
 			primaryStage.setTitle("Morgage Calculator");
@@ -60,6 +57,17 @@ public class Main extends Application {
 			grid3.setVgap(10);
 			grid3.setHgap(40);
 			
+			// declared controls
+			Button btnCalculate = new Button("Calculate");
+			final DatePicker datePicker = new DatePicker();
+			Button button2 = new Button("Return to Calculator");
+			button2.setOnAction(e -> primaryStage.setScene(scene1));
+			Button button3 = new Button("Compare Options");
+			Button button4 = new Button("Return to Calculator");
+			button4.setOnAction(e -> primaryStage.setScene(scene1));
+			Button btnReset = new Button("Reset");
+			btnReset.setStyle("-fx-background-color: RED");
+
 
 			// declared textfields for scene 1
 			TextField homeValue = new TextField();
@@ -70,7 +78,39 @@ public class Main extends Application {
 			TextField PMI = new TextField();
 			TextField homeIns = new TextField();
 			TextField monthlyHOA = new TextField();
-
+			
+			// grid 1 layout
+			grid.add(new Text("Home Value:"), 0, 1);
+			grid.add(homeValue, 1, 1);
+			grid.add(new Text("$"), 2, 1);
+			grid.add(new Text("Loan Amount:"), 0, 2);
+			grid.add(loanAmount, 1, 2);
+			grid.add(new Text("$"), 2, 2);
+			grid.add(new Text("Interest Rate:"), 0, 3);
+			grid.add(intRate, 1, 3);
+			grid.add(new Text("%"), 2, 3);			
+			grid.add(new Text("Start Date:"), 0, 4); 
+			grid.add(datePicker, 1, 4);
+			datePicker.setValue(LocalDate.now());	
+			grid.add(new Text("Loan Term:"), 0, 5);
+			grid.add(loanTerm, 1, 5);
+			grid.add(new Text("years"), 2, 5);
+			grid.add(new Text("Property Tax:"), 0, 6);
+			grid.add(propertyTax, 1, 6);
+			grid.add(new Text("%"), 2, 6);
+			grid.add(new Text("PMI:"), 0, 7);
+			grid.add(PMI, 1, 7);
+			grid.add(new Text("%"), 2, 7);
+			grid.add(new Text("Home Ins:"), 0, 8);
+			grid.add(homeIns, 1, 8);
+			grid.add(new Text("$/yr"), 2, 8);
+			grid.add(new Text("Monthly HOA"), 0, 9);
+			grid.add(monthlyHOA, 1, 9);
+			grid.add(new Text("$"), 2, 9);
+			
+			grid.add(btnCalculate, 1, 10);
+			grid.add(btnReset, 0, 10);
+			
 			// declare labels for scene 2
 			Label headingForSceneTwo = new Label("Repayment");
 			Label headingForSceneTwoPartTwo = new Label("Summary");
@@ -190,66 +230,27 @@ public class Main extends Application {
 			grid3.add(ansBiWeeklyPayment, 1, 1);
 			grid3.add(biWeeklyPayment, 1, 2);
 			
-			//Line line1 = new Line(0, 100, 135, 100);
-			//grid2.add(line1, 0, 3);
-			//Line line2 = new Line(0, 100, 115, 100);
-			//grid2.add(line2, 1, 3);
+			Line line11 = new Line(0, 100, 135, 100);
+			grid3.add(line11, 0, 3);
+			Line line12 = new Line(0, 100, 115, 100);
+			grid3.add(line12, 1, 3);
 
 			grid3.add(ansMonthlyPayOffDate, 0, 4);
 			grid3.add(monthlyPayOffDate, 0, 5);
 			grid3.add(ansBiWeeklyPayOffDate, 1, 4);
 			grid3.add(biWeeklyPayOffDate, 1, 5);
 			
-			//Line line3 = new Line(0, 100, 135, 100);
-			//grid2.add(line3, 0, 6);
-			//Line line4 = new Line(0, 100, 115, 100);
-			//grid2.add(line4, 1, 6);
+			Line line13 = new Line(0, 100, 135, 100);
+			grid3.add(line13, 0, 6);
+			Line line14 = new Line(0, 100, 115, 100);
+			grid3.add(line14, 1, 6);
 
 			grid3.add(ansMonthlyIntPaid, 0, 7);
 			grid3.add(monthlyIntPaid, 0, 8);
 			grid3.add(ansBiWeeklyIntPaid, 1, 7);
 			grid3.add(biWeeklyIntPaid, 1, 8);
-			
+			grid3.add(button4, 0, 9);
 
-			// declared controls
-			Button btnCalculate = new Button("Calculate");
-
-			// grid layout
-			grid.add(new Text("Home Value:"), 0, 1);
-			grid.add(homeValue, 1, 1);
-			grid.add(new Text("$"), 2, 1);
-			grid.add(new Text("Loan Amount:"), 0, 2);
-			grid.add(loanAmount, 1, 2);
-			grid.add(new Text("$"), 2, 2);
-			grid.add(new Text("Interest Rate:"), 0, 3);
-			grid.add(intRate, 1, 3);
-			grid.add(new Text("%"), 2, 3);
-			
-			grid.add(new Text("Start Date:"), 0, 4); 
-			grid.add(datePicker, 1, 4);
-			datePicker.setValue(LocalDate.now());
-			
-			grid.add(new Text("Loan Term:"), 0, 5);
-			grid.add(loanTerm, 1, 5);
-			grid.add(new Text("years"), 2, 5);
-			
-			grid.add(new Text("Property Tax:"), 0, 6);
-			grid.add(propertyTax, 1, 6);
-			grid.add(new Text("%"), 2, 6);
-			
-			grid.add(new Text("PMI:"), 0, 7);
-			grid.add(PMI, 1, 7);
-			grid.add(new Text("%"), 2, 7);
-			
-			grid.add(new Text("Home Ins:"), 0, 8);
-			grid.add(homeIns, 1, 8);
-			grid.add(new Text("$/yr"), 2, 8);
-			
-			grid.add(new Text("Monthly HOA"), 0, 9);
-			grid.add(monthlyHOA, 1, 9);
-			grid.add(new Text("$"), 2, 9);
-			
-			grid.add(btnCalculate, 1, 10);
 			
 			
 
@@ -284,10 +285,46 @@ public class Main extends Application {
 
 			});
 			
-			
-			
 
+			button3.setOnAction(new EventHandler<ActionEvent>() {
 
+				public void handle(ActionEvent f) {
+			
+					primaryStage.setScene(scene3);
+					ansMonthlyPayment.setText(String.format("$%6.2f",client1.CalAfterMonthsPMI()));
+					ansBiWeeklyPayment.setText(String.format("$%,6.2f",client2.CalBiWeeklyPayment(client1.CalAfterMonthsPMI())));
+					ansMonthlyPayOffDate.setText(String.format(client1.CalDate()));
+					ansBiWeeklyPayOffDate.setText(String.format(client2.CalbiWeeklyPayOff(client1.CalDate())));
+					ansMonthlyIntPaid.setText(String.format("$%,6.2f",client1.CalTotalInterest()));
+					ansBiWeeklyIntPaid.setText(String.format("$%,6.2f",client2.CalbiWeeklyInt(Double.parseDouble(loanAmount.getText()))));
+					
+					
+					//ansBiWeeklyPayment.setText(String.format("$%,6.2f",client2.CalBiWeeklyPayment(client1.CalAfterMonthsPMI())));
+					
+					//ansBiWeeklyIntPaid.setText(String.format("$%,6.2f",client2.CalbiWeeklyInt(Double.parseDouble(loanAmount.getText()))));
+				}
+
+			});
+			
+			btnReset.setOnAction(new EventHandler<ActionEvent>() {
+
+				public void handle(ActionEvent d) {
+			
+					primaryStage.setScene(scene1);
+					homeValue.setText("");
+					loanAmount.setText("");
+					intRate.setText("");
+					loanTerm.setText("");								
+					propertyTax.setText("");
+					PMI.setText("");
+					datePicker.setValue(LocalDate.now());
+					homeIns.setText("");
+					monthlyHOA.setText("");
+	
+				}
+
+			});
+					
 			primaryStage.setScene(scene1);
 			primaryStage.show();
 		} catch (Exception e) {

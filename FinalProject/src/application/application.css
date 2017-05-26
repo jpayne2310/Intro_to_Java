@@ -2,7 +2,7 @@
     -fx-padding: 20 ;
 }
 .button {
-    -fx-background-color: red;
+    -fx-background-color: blue;
     -fx-text-fill: white;
 }
 .text-field{

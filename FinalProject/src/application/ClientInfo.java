@@ -7,15 +7,15 @@ public class ClientInfo {
 	private static double MonthlyTaxPaid = 0;
 	double totalPMI = 0;
 
-	double homeValue;
+	private double homeValue;
 	private double loanAmount;
-	double intRate;
-	int loanTerm;
-	String date;
-	double propertyTax;
-	double PMI;
-	double homeIns;
-	double monthlyHOA;
+	private double intRate;
+	private int loanTerm;
+	private String date;
+	private double propertyTax;
+	private double PMI;
+	private double homeIns;
+	private double monthlyHOA;
 	
 	public ClientInfo() {
 		homeValue = 0;
@@ -27,6 +27,18 @@ public class ClientInfo {
 		PMI = .010832;
 		homeIns = 0;
 		monthlyHOA = 0;
+	}
+	
+	public ClientInfo(double homeValue, double loanAmount, double intRate, int loanTerm, String date, double propertyTax, double PMI, double homeIns, double monthlyHOA) {
+		homeValue = homeValue;
+		loanAmount = loanAmount;
+		intRate = intRate;
+		loanTerm = loanTerm;
+		date = date;
+		propertyTax = propertyTax;
+		PMI = .010832;
+		homeIns = homeIns;
+		monthlyHOA = monthlyHOA;
 	}
 
 	public String getDate() {

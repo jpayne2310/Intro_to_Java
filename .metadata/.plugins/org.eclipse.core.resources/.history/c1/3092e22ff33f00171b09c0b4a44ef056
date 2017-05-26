@@ -1,0 +1,10 @@
+.root {
+    -fx-padding: 20 ;
+}
+.button {
+    -fx-background-color: cyrn;
+    -fx-text-fill: white;
+}
+.text-field{
+    -fx-max-width: 80;
+}
