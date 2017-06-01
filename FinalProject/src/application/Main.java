@@ -219,6 +219,8 @@ public class Main extends Application {
 			Label ansMonthlyIntPaid = new Label();
 			Label biWeeklyIntPaid = new Label("Total Interest Paid");
 			Label ansBiWeeklyIntPaid = new Label();
+			Label savings = new Label("Your total savings by choosing the biweekly option: ");
+			Label ansSavings = new Label();
 			
 			// grid3 layout
 			headingForSceneThree.setFont(Font.font("Verdana", FontWeight.BOLD, 20));
@@ -250,6 +252,8 @@ public class Main extends Application {
 			grid3.add(ansBiWeeklyIntPaid, 1, 7);
 			grid3.add(biWeeklyIntPaid, 1, 8);
 			grid3.add(button4, 0, 9);
+			grid3.add(savings, 0 , 8, 10, 10);
+			grid3.add(ansSavings, 0, 12);
 
 			
 			
@@ -297,7 +301,7 @@ public class Main extends Application {
 					ansBiWeeklyPayOffDate.setText(String.format(client2.CalbiWeeklyPayOff(client1.CalDate())));
 					ansMonthlyIntPaid.setText(String.format("$%,6.2f",client1.CalTotalInterest()));
 					ansBiWeeklyIntPaid.setText(String.format("$%,6.2f",client2.CalbiWeeklyInt(Double.parseDouble(loanAmount.getText()))));
-					
+					ansSavings.setText(String.format("$%,6.2f", client2.savings(client1.CalTotalInterest())));
 					
 					//ansBiWeeklyPayment.setText(String.format("$%,6.2f",client2.CalBiWeeklyPayment(client1.CalAfterMonthsPMI())));
 					

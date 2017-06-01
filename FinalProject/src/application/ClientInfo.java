@@ -107,9 +107,7 @@ public class ClientInfo {
 	
 	//methods
 	public double CalMonthlyPayment() {
-		//double powerCal = Math.pow((1 + intRate), loanTerm);
-		//double monthlyPaymentpart1 = (intRate*powerCal)/(powerCal-1);
-		double monthlyPayment = (loanAmount*.006356)+CalMonthlyPMI();
+		double monthlyPayment = (loanAmount*.006356)+CalMonthlyPMI()+monthlyHOA;
 		return monthlyPayment;
 	}
 	public double CalAfterMonthsPMI() {

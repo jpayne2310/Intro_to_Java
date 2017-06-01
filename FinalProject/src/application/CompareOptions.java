@@ -5,6 +5,7 @@ public class CompareOptions extends ClientInfo {
 	double biWeeklyPayment;
 	String biWeeklyPayOff;
 	double biWeeklyInt;
+	double difference;
 	
 	public CompareOptions(double homeValue, double loanAmount, double intRate, int loanTerm, String date, double propertyTax, double PMI, double homeIns, double monthlyHOA) {
 		super(homeValue, loanAmount, intRate, loanTerm, date, propertyTax, PMI, homeIns, monthlyHOA);
@@ -31,6 +32,9 @@ public class CompareOptions extends ClientInfo {
 		biWeeklyInt = loanAmount * .595668;
 		return biWeeklyInt;
 	}
-	
+	public double savings(double totalInterest) {
+		difference = totalInterest - biWeeklyInt;
+		return difference;
+	}
 
 }
